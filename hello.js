@@ -1,4 +1,13 @@
 // Author: Nadirah Pinney
 
-console.log("Hello World!");
-console.log("this some codeee");
+
+let readline = require('readline-sync');
+
+let age =   Number(readline.question('What is age? '));
+
+
+
+
+
+
+console.log('whattt you are  ' + age + ' years old?? ' );
