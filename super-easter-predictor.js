@@ -52,4 +52,4 @@ let n = Math.floor((h + r - 7 * m + 114)/31);
 let p = Math.floor((h + r - 7 * m + 114) % 31)
 //console.log("p = " + p);
 
-console.log('In ' + y + ' Easter fell on ' + n +'/' + (p + 1));
+console.log('In ' + y + '  Easter fell on ' + n +'/' + (p + 1));
