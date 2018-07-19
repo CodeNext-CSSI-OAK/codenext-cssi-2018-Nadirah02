@@ -14,6 +14,12 @@ stringTimes("Hi", 1) → "Hi"
 *******************************************************************************/
 
 function stringTimes(str, n) {
+  let returnString = "";
+  while( n > 0) {
+    returnString += str;
+    n--;
+  }
+  return returnString;
 
 }
 
@@ -34,6 +40,13 @@ countXX("xxxx") → 3
 *******************************************************************************/
 
 function countXX(str) {
+let count = 0;
+for( let i = 0; i < str.length; i++) {
+  if ( str.substring(i, i + 2) === "xx") {
+    count++;
+  }
+}
+ return count;
 
 }
 
@@ -60,6 +73,19 @@ function bobThere(str) {
 // Test this function.
 testBobThere();
 
+function bThere(str) {
+  if (  str.indexOf("b") >= 0) {
+  return true;
+} else {
+  return false;
+}
+
+
+}
+
+
+console.log(bThere("basketball"));
+console.log(bThere("airplane"));
 /******************************************************************************
                                    countCode()
 

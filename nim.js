@@ -27,7 +27,7 @@ var stonesRemaining, activePlayer, quit;
 *******************************************************************************/
 
 function printGreeting() {
-
+console.log(" ---------------- Nadirah -------------- N.I.M-------  ");
 }
 
 /******************************************************************************
@@ -48,6 +48,8 @@ function printGreeting() {
 *******************************************************************************/
 
 function setupGame() {
+let stonesRemaining = 10
+activePlayer = Math.floor(math.random()* 2)
 
 }
 
@@ -62,7 +64,12 @@ function setupGame() {
 *******************************************************************************/
 
 function printStones() {
-
+let stones = "";
+  for (let i = 0; i < stonesRemaining; i++) {
+    stones += "O ";
+  }
+  console.log(stones);
+  console.log("Number of stones: " + stonesRemaining);
 }
 
 /******************************************************************************
@@ -87,7 +94,29 @@ function printStones() {
 *******************************************************************************/
 
 function removeStones() {
+  let stonesToRemove = 0;
+  // Get and validate user input
+  while(stonesToRemove !== 1 && stonesToRemove !== 2 && stonesToRemove !== 3) {
+    if(activePlayer === 0){
+      stonesToRemove = Number(readline.question("Player One, Enter 1, 2, or 3"));
+    } else {
+      stonesToRemove = Number(readline.question("PLayer Two, Enter 1, 2, or 3"));
+    }
+    if (stonesToRemove !== 1 && stonesToRemove !== 2 && stonesToRemove !== 3)  {
+      console.log("Please enter a valid number! ");
+    } else if (stonesToRemove > stonesRemaining) {
+      stonesToRemove = 0;
+      console.log("There are only " + stonesRemaining + " stones remaining! ");
+    }
 
+  }
+  stonesRemaining -= stonesToRemove;
+  if (activePlayer === 0) {
+    activePlayer = 1;
+  } else {
+    activePlayer = 0;
+  }
+  }
 }
 
 /******************************************************************************
@@ -105,7 +134,17 @@ function removeStones() {
 *******************************************************************************/
 
 function processResult() {
+  if(stonesRemaining == 0 && playActive === 0) {
+    console.log(" Congrats Player 1 won! ");
+  } else(stonesRemaining === 0 && playerActive === 1) {
+    console.log(" Aye Player 2 won!");
+  }
 
+
+  let keepPlaying = readline.question("Play again? (yes or no)");
+  if(keepPlaying !== "yes" && keepPlaying !== "y") {
+    quit = true;
+  }
 }
 
 /******************************************************************************
@@ -126,8 +165,18 @@ function processResult() {
 *******************************************************************************/
 
 function run() {
-
+printGreeting();
+quit = false;
+setupGame();
+while (!quit)
+  setupGame();
+  while(stonesRemaining > 0) {
+    printStones();
+    removeStones();
+  }
+  processResult();
 }
-
+console.log("have a nice one!");
+}
 // Run the program!
 run();

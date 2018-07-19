@@ -1,8 +1,8 @@
 // Author: FirstName LastName
-var readline = require("readline-sync");
+let readline = require("readline-sync");
 
 // global variables
-var firstName, lastName, momMaidenName, cityBorn, dreamCar, street, fantasyName;
+let firstName, lastName, momMaidenName, cityBorn, firstCrush, street, fantasyName;
 
 /******************************************************************************
                                   getNewFirstName()
@@ -13,7 +13,7 @@ var firstName, lastName, momMaidenName, cityBorn, dreamCar, street, fantasyName;
 *******************************************************************************/
 
 function getNewFirstName() {
-
+  return firstName.substring(0,3) + lastName.substring(0,2).toLowerCase();
 }
 
 /******************************************************************************
@@ -25,18 +25,23 @@ function getNewFirstName() {
 *******************************************************************************/
 
 function getNewLastName() {
-
+    return momMaidenName.substring(0,2) + cityBorn.substring(0,3).toLowerCase();
 }
 
 /******************************************************************************
                                   getTitle()
 
   This function returns the user's title. To do so, concatenate the last three
-  letters of their real last name, reversed, and the model of their dream car.
+  letters of their real last name, reversed, and the person of their firstCrush.
 *******************************************************************************/
 
 function getTitle() {
+  //return lastName.substring(0,3) + firstCrush.substring().toLowerCase();
 
+  let last = lastName.charAt(lastName.length -1).toUpperCase();
+  let secondToLast = lastName.charAt(lastName.length -2);
+  let thirdTolast = lastName.charAt(lastName.length -3);
+    return last + secondToLast + thirdTolast + firstCrush.toLowerCase();
 }
 
 /******************************************************************************
@@ -47,7 +52,7 @@ function getTitle() {
 *******************************************************************************/
 
 function getHonorific() {
-
+  return getTitle() + "of " + street.toLowerCase();
 }
 
 /******************************************************************************
@@ -61,7 +66,13 @@ function getHonorific() {
 *******************************************************************************/
 
 function run() {
-
+  firstName = readline.question("What is your first name: ")
+  lastName = readline.question("What is your last name: ")
+  momMaidenName = readline.question("What is yout moms maiden name: ")
+  cityBorn = readline.question("What city were you born in: ")
+  firstCrush = readline.question("Who's your crush: ")
+  street = readline.question("What street do you live on: ")
+  console.log(getNewFirstName() + " " + getNewLastName() + ","  + getHonorific());
 }
 
 // Run the program!

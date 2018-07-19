@@ -15,9 +15,11 @@ withoutEnd("coding") → "odin"
 *******************************************************************************/
 
 function withoutEnd(str) {
-
+let firstChar = str.charAt(str.length -1);
+let lastChar = str.charAt(str.length -1);
 }
 
+console.log("hello");
 // Test this function.
 testWithoutEnd();
 
